@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <div class="container">
+        <div class="reg-form">
+            <h1>Contact Us</h1>
+            <form name="students-form">
+                <input type="text" name="Name" placeholder="Name">
+                <input type="text" name="Phone" placeholder="Number">
+                <input type="email" name="Email"  placeholder="Email">
+                <textarea rows="5" name="Message" placeholder="Your message"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+      
+        
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz2nzduBEu5pXUWv6K3bcW7wnD91lM9IlO6f0vTeD4UzT_bbC2jlTxag78wosapJJ48/exec'
+        const form = document.forms['students-form']
+        
+
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                   alert("Your form data has been successfully transfered.")
+                    form.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+</html>
